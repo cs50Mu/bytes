@@ -1176,6 +1176,8 @@ impl fmt::Write for BytesMut {
 
 impl Clone for BytesMut {
     fn clone(&self) -> BytesMut {
+        // 这里能用 slice 操作是因为 BytesMut 实现了
+        // deref 到 &[u8]
         BytesMut::from(&self[..])
     }
 }
